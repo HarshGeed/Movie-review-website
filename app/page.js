@@ -1,3 +1,8 @@
-export default function Home(){
-  return <h1>Testing...</h1>
-} 
+import Navbar from "@/Components/Navbar";
+export default function Home() {
+ return(
+  <>
+  <Navbar/>
+  </>
+ )
+}
