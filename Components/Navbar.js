@@ -4,13 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/video-player.png";
 import watchlogo from "../public/bookmark.png";
+import {MovieDrop, TvShowDrop} from "../Components/Menu-drop"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const hoverStart = () => {
+    setModalIsOpen(true);
+  };
+
+  const hoverEnd = () => {
+    setModalIsOpen(false);
+  };
 
   return (
-    <nav className="bg-gray-800 text-white">
-      <div className="container mx-auto px-4 flex justify-between items-center py-4">
+    <nav className="flex bg-gray-800 text-white">
+      <div className="container mx-auto px-4 flex justify-between items-center py-4 z-10">
         {/* Logo */}
 
         <div className="flex items-center space-x-2">
@@ -19,21 +29,26 @@ export default function Navbar() {
             <span className="text-2xl font-bold ml-2 mt-1">BiNGE It</span>
           </Link>
         </div>
+        {/* Dropdown Menu */}
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
           <Link href="/">
-            <span className="hover:text-yellow-400 cursor-pointer">Movies</span>
+            <span
+              onMouseEnter={hoverStart}
+              onMouseLeave={hoverEnd}
+              className="hover:text-yellow-400 cursor-pointer"
+            >
+              <MovieDrop openModal={modalIsOpen} />
+            </span>
           </Link>
           <Link href="/reviews">
             <span className="hover:text-yellow-400 cursor-pointer">
-              TV Shows
+            <TvShowDrop openModal={modalIsOpen}/>
             </span>
           </Link>
           <Link href="/about">
-            <span className="hover:text-yellow-400 cursor-pointer">
-              Anime
-            </span>
+            <span className="hover:text-yellow-400 cursor-pointer">Anime</span>
           </Link>
           <Link href="/contact">
             <span className="hover:text-yellow-400 cursor-pointer">
@@ -41,13 +56,16 @@ export default function Navbar() {
             </span>
           </Link>
           <Link href="/contact">
-          <div className="flex items-center space-x-2">
-          <Image className="h-4 w-auto" src={watchlogo} alt="Binge it logo" />
-            <span className="hover:text-yellow-400 cursor-pointer">
-              Watchlist
-            </span>
-          </div>
-          
+            <div className="flex items-center space-x-2">
+              <Image
+                className="h-6 w-auto"
+                src={watchlogo}
+                alt="Binge it logo"
+              />
+              {/* <span className="hover:text-yellow-400 cursor-pointer">
+                Watchlist
+              </span> */}
+            </div>
           </Link>
           <Link href="/contact">
             <span className="hover:text-yellow-400 cursor-pointer">
