@@ -5,7 +5,8 @@ import Image from "next/image";
 import logo from "../public/video-player.png";
 import watchlogo from "../public/bookmark.png";
 import FlyoutLink from "./FlyoutLink";
-import {PricingContent} from "./FlyoutContent";
+import {MoviesContent, TVShowsContent, AnimeContent} from "./FlyoutContent";
+import HoverLink from "./BlueLineLink";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,37 +26,37 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
           <span>
-            <span><FlyoutLink href="#" FlyoutContent={PricingContent}>Pricing</FlyoutLink></span>
+            <span><FlyoutLink href="#" FlyoutContent={MoviesContent}>Movies</FlyoutLink></span>
           </span>
-          <Link href="/reviews">
-            <span className="hover:text-yellow-400 cursor-pointer"> 
-              TV Shows
+          <span href="/reviews">
+            <span> 
+            <FlyoutLink href="#" FlyoutContent={TVShowsContent}>TV Shows</FlyoutLink>
             </span>
-          </Link>
-          <Link href="/about">
-            <span className="hover:text-yellow-400 cursor-pointer">
-              Anime
+          </span>
+          <span href="/about">
+            <span>
+            <FlyoutLink href="#" FlyoutContent={AnimeContent}>Anime</FlyoutLink>
             </span>
-          </Link>
-          <Link href="/contact">
-            <span className="hover:text-yellow-400 cursor-pointer">
-              Trending
+          </span>
+          <span href="/contact">
+            <span>
+              <HoverLink href="#">Trending</HoverLink>
             </span>
-          </Link>
-          <Link href="/contact">
+          </span>
+          <span href="/contact">
           <div className="flex items-center space-x-2">
           <Image className="h-4 w-auto" src={watchlogo} alt="Binge it logo" />
             <span className="hover:text-yellow-400 cursor-pointer">
-              Watchlist
+            <HoverLink href="#">Watchlist</HoverLink>
             </span>
           </div>
           
-          </Link>
-          <Link href="/contact">
-            <span className="hover:text-yellow-400 cursor-pointer">
-              Sign in
+          </span>
+          <span href="/contact">
+            <span>
+            <HoverLink href="#">Sign In</HoverLink>
             </span>
-          </Link>
+          </span>
         </div>
 
         {/* Mobile Menu Button */}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 const FlyoutLink = ({ children, href, FlyoutContent }) => {
-    const [open, setOpen] = useState(true); // set it to false after editing
+    const [open, setOpen] = useState(false);
   
     const showFlyout = FlyoutContent && open;
    
