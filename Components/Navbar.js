@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/video-player.png";
 import watchlogo from "../public/bookmark.png";
+import FlyoutLink from "./FlyoutLink";
+import {PricingContent} from "./FlyoutContent";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,11 +24,11 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
-          <Link href="/">
-            <span className="hover:text-yellow-400 cursor-pointer">Movies</span>
-          </Link>
+          <span>
+            <span><FlyoutLink href="#" FlyoutContent={PricingContent}>Pricing</FlyoutLink></span>
+          </span>
           <Link href="/reviews">
-            <span className="hover:text-yellow-400 cursor-pointer">
+            <span className="hover:text-yellow-400 cursor-pointer"> 
               TV Shows
             </span>
           </Link>
