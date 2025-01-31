@@ -26,7 +26,7 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
           <span>
-            <span><FlyoutLink href="#" FlyoutContent={MoviesContent}>Movies</FlyoutLink></span>
+            <span><FlyoutLink href="/movies" FlyoutContent={MoviesContent}>Movies</FlyoutLink></span>
           </span>
           <span href="/reviews">
             <span> 

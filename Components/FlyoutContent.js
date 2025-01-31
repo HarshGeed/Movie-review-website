@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+
 
 const LinkClass = "block text-sm border-2 border-gray-800 w-52 ml-4 p-2 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-200"
 
