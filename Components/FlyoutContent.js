@@ -19,7 +19,7 @@ const MoviesContent = () => {
 
       {/* Main section with important links */}
       <div>
-        <div className="mb-3 space-y-3 text-2xl font-medium">
+        <div className="mb-3 space-y-3 text-2xl ">
           <Link
             href="#"
             className={LinkClass}
@@ -63,7 +63,7 @@ const TVShowsContent = () => {
 
       {/* Main section with important links */}
       <div>
-        <div className="mb-3 space-y-3 text-2xl font-medium">
+        <div className="mb-3 space-y-3 text-2xl ">
           <Link
             href="#"
             className={LinkClass}
@@ -106,7 +106,7 @@ const AnimeContent = () => {
 
       {/* Main section with important links */}
       <div>
-        <div className="mb-3 space-y-3 text-2xl font-medium">
+        <div className="mb-3 space-y-3 text-2xl ">
           <Link
             href="#"
             className={LinkClass}

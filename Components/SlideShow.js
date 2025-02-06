@@ -23,7 +23,7 @@ export default function ImageSlideshow() {
   };
 
   return (
-    <div className=" w-full h-full rounded-lg overflow-hidden shadow-lg relative sm:h-80 md:h-96 bg-white">
+    <div className=" w-full h-full rounded-lg overflow-hidden shadow-xl relative sm:h-80 md:h-96 bg-white">
       <button
         className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-80 z-10 transition-transform duration-300 hover:scale-110"
         onClick={goBack}

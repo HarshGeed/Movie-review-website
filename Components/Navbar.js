@@ -46,7 +46,7 @@ export default function Navbar() {
           <span href="/contact">
           <div className="flex items-center space-x-2">
           <Image className="h-4 w-auto" src={watchlogo} alt="Binge it logo" />
-            <span className="hover:text-yellow-400 cursor-pointer">
+            <span className= "cursor-pointer">
             <HoverLink href="#">Watchlist</HoverLink>
             </span>
           </div>
