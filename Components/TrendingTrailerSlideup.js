@@ -1,5 +1,5 @@
 import Image from "next/image";
-import image2 from "@/public/image2.jpg"
+import image2 from "@/public/slideShowImages/image2.jpg"
 import playBtn from "@/public/play-button.png"
 import Link from "next/link";
 export default function TrendingTrailerSlideup(){
@@ -7,7 +7,7 @@ export default function TrendingTrailerSlideup(){
         <>
         {/* boxes of trending trailers */}
         <Link href="#">
-        <div className="flex border-2 border-yellow-400 w-[30rem] shadow-lg mt-2 transform hover:scale-105 transition-transform duration-300">
+        <div className="flex border-2 border-yellow-400 w-[510px] h-[121px] shadow-lg mt-[20px] transform hover:scale-105 transition-transform duration-300">
            
             <Image 
             src={image2}
