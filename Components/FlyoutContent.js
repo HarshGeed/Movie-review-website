@@ -1,3 +1,4 @@
+import { colorTheme } from "@/lib/Constants";
 import Link from "next/link";
 
 
@@ -7,7 +8,7 @@ const MoviesContent = () => {
   return (
     <div className="flex relative mr-1 -mx-8 w-[40rem] h-auto bg-white p-6 shadow-xl ">
       {/* Side section with images */}
-      <div className="relative w-[20rem] h-50 bg-gray-800 mr-4 parent flex items-center justify-center pb-[2rem]">
+      <div className={`relative w-[20rem] h-50 bg-${colorTheme} mr-4 parent flex items-center justify-center pb-[2rem]`}>
         <div className="p-8 m-auto text-white">
           <p>
             &quot;The length of a film should be directly related to the
@@ -52,7 +53,7 @@ const TVShowsContent = () => {
   return (
     <div className="flex relative mr-1 -mx-8 w-[40rem] h-auto bg-white p-6 shadow-xl ">
       {/* Side section with images */}
-      <div className="relative w-[20rem] h-50 bg-gray-800 mr-4 parent flex items-center justify-center pb-[2rem]">
+      <div className={`relative w-[20rem] h-50 bg-${colorTheme} mr-4 parent flex items-center justify-center pb-[2rem]`}>
         <div className="p-8 m-auto text-white">
           <p>
             &quot;Whenever I'm about to do something, I think, "Would an idiot do that?" And if they would, I do not do that thing..&quot;
@@ -95,7 +96,7 @@ const AnimeContent = () => {
   return (
     <div className="flex relative mr-1 -mx-8 w-[40rem] h-auto bg-white p-6 shadow-xl ">
       {/* Side section with images */}
-      <div className="relative w-[20rem] h-50 bg-gray-800 mr-4 parent flex items-center justify-center pb-[2rem]">
+      <div className={`relative w-[20rem] h-50 bg-${colorTheme} mr-4 parent flex items-center justify-center pb-[2rem]`}>
         <div className="p-8 m-auto text-white">
           <p>
             &quot;The important thing is not how long you live. It's what you accomplish with your life.&quot;

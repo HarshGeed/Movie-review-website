@@ -22,7 +22,7 @@ const slides = [
     link: "https://www.google.com",
     rating: 8.9,
     context:
-    "This will include catchy lines about the slides we are going to show 2",
+      "This will include catchy lines about the slides we are going to show 2",
   },
   {
     image: "/slideShowImages/image3.jpg",
@@ -124,6 +124,7 @@ export default function ImageSlideshow() {
         </button>
 
         {/* Animated Slide Wrapper */}
+        {/* We need to fix the animation issue here probably the problem is that the image gets stuck in middle of the container for fraction of seconds */}
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             className="relative w-full h-full overflow-hidden"
@@ -147,7 +148,12 @@ export default function ImageSlideshow() {
         </AnimatePresence>
       </div>
       {/* Slideshow movie details will be here */}
-      <div className="flex border-2 border-red-300 mt-6 h-40 pt-6 pl-2 shadow-xl" >
+      {/* We need to apply the animation effect here */}
+      <div
+        className="flex border-2 border-red-300 mt-6 h-40 pt-6 pl-2 shadow-xl"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div>
           <Image src={playBtn} alt="Play button icon" width={83} />
         </div>

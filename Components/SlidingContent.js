@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+
 
 export default function SlidingContent({name, rating, trailerLink}){
     

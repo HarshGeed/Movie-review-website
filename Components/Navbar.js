@@ -7,12 +7,13 @@ import watchlogo from "../public/bookmark.png";
 import FlyoutLink from "./FlyoutLink";
 import {MoviesContent, TVShowsContent, AnimeContent} from "./FlyoutContent";
 import HoverLink from "./BlueLineLink";
+import { colorTheme } from "@/lib/Constants";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className={`bg-gray-800 text-white`}>
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
         {/* Logo */}
 
