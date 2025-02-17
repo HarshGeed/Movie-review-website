@@ -1,3 +1,4 @@
+import ActorsMania from "@/Components/ActorsMania";
 import FeaturedToday from "@/Components/FeaturedToday";
 import HomePage from "@/Components/HomePage";
 import Navbar from "@/Components/Navbar";
@@ -10,6 +11,7 @@ export default function Home() {
 
         <HomePage />
         <FeaturedToday/>
+        <ActorsMania/>
         </div>
      
     </>

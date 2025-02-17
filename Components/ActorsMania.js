@@ -5,16 +5,41 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Rubik_Distressed } from 'next/font/google'
+import { Rubik_Distressed } from "next/font/google";
 
-const rubikDistressed = Rubik_Distressed({ 
-    weight: '400',
-    subsets: ['latin'] 
-  })
+const data = [
+  {
+    image: "/slideShowImages/image1.jpg",
+    name: "Interstellar",
+    link: "https://www.google.com",
+  },
+  {
+    image: "/slideShowImages/image2.jpg",
+    name: "Inception",
+    link: "https://www.google.com",
+  },
+  {
+    image: "/slideShowImages/image3.jpg",
+    name: "Godfather",
+    link: "https://www.google.com",
+  },
+  {
+    image: "/slideShowImages/image1.jpg",
+    name: "Men in Black",
+    link: "https://www.google.com",
+  },
+  {
+    image: "/slideShowImages/image1.jpg",
+    name: "Avengers",
+    link: "https://www.google.com",
+  },
+];
 
-{
-  /* Left Button */
-}
+const rubikDistressed = Rubik_Distressed({
+  weight: "400",
+  subsets: ["latin"],
+});
+
 const PrevButton = ({ onClick }) => {
   return (
     <button
@@ -26,9 +51,6 @@ const PrevButton = ({ onClick }) => {
   );
 };
 
-{
-  /* Right Button */
-}
 const NextButton = ({ onClick }) => {
   return (
     <button
@@ -39,38 +61,35 @@ const NextButton = ({ onClick }) => {
     </button>
   );
 };
-export default function MovieCard({ data, customizedClass }) {
+
+export default function MovieCard() {
   const settings = {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToShow: 6,
+    slidesToScroll: 2,
     nextArrow: <NextButton />,
     prevArrow: <PrevButton />,
   };
 
   return (
     <>
-      <Slider {...settings} className="mx-4 ">
+      <h2 className={`font-bold text-2xl text-gray-800 mt-16`}>
+        Featured Today &gt;
+      </h2>
+      <Slider {...settings} className="mx-4 mt-16 gap-x-1"> {/* Reduced gap between slides */}
         {data.map((d, index) => (
-          <div key={index} className="px-2 group">
-            <div className={`relative border-2 border-black w-[26rem] h-[17rem] rounded-2xl z-0 transition-transform duration-300 hover:shadow-2xl ${customizedClass}`}>
+          <div key={index} className="px-1 group"> {/* Reduced padding */}
+            <div className="relative border-2 border-black w-[13rem] h-[13rem] rounded-full z-0">
               <Image
                 src={d.image}
-                alt={d.name} 
+                alt={d.name}
                 layout="fill"
+        
                 objectFit="cover"
-                className="rounded-2xl transition-opacity duration-300 group-hover:opacity-95"
+                className="rounded-full transition-opacity duration-300 group-hover:opacity-95"
               />
-
-              {/* Gradient Overlay to Darken the Bottom */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 via-transparent rounded-2xl"></div>
-
-              {/* Movie Name Positioned Above the Gradient */}
-              <h4 className={`absolute text-white z-10 bottom-4 left-4 text-3xl font-light ${rubikDistressed.className} `}>
-                {d.name}
-              </h4>
             </div>
           </div>
         ))}
