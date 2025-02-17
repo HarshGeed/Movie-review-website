@@ -52,9 +52,9 @@ export default function MovieCard({ data, customizedClass }) {
 
   return (
     <>
-      <Slider {...settings} className="mx-4 ">
+      <Slider {...settings} className="ml-6">
         {data.map((d, index) => (
-          <div key={index} className="px-2 group">
+          <div key={index} className=" group">
             <div className={`relative border-2 border-black w-[26rem] h-[17rem] rounded-2xl z-0 transition-transform duration-300 hover:shadow-2xl ${customizedClass}`}>
               <Image
                 src={d.image}

@@ -72,7 +72,7 @@ export default function MovieCard_2({ data }) {
                 objectFit="cover"
               />
             </div>
-            <div className="flex flex-wrap w-[16rem] h-[10rem] border-[1px] border-black rounded-2xl mt-2 shadow-2xl">
+            <div className="flex flex-wrap w-[16rem] h-[10rem] border-[.5px] border-black rounded-2xl mt-2">
               <button
                 className="ml-2 mb-1"
                 onClick={() => toggleBookmark(index)}
@@ -80,7 +80,7 @@ export default function MovieCard_2({ data }) {
                 {bookmarkedMovies[index] ? (
                   <BsBookmarkCheckFill className="w-5 h-5 text-gray-800" />
                 ) : (
-                  <BsBookmarkCheck className="w-6 h-6 text-gray-800" />
+                  <BsBookmarkCheck className="w-5 h-5 text-gray-800" />
                 )}
               </button>
               <h3 className="ml-4 mt-2 text-xl">{d.name}</h3>

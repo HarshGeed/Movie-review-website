@@ -39,7 +39,7 @@ export default function TopTrending() {
       <h2 className={`flex font-bold text-2xl text-gray-800 mt-16`}>
         Top Trending &gt;
       </h2>
-      <div className="mt-16 mx-4">
+      <div className="mt-8 mx-4">
 
       <MovieCard_2 data={data}/>
       </div>
