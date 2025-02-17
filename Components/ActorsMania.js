@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Rubik_Distressed } from "next/font/google";
+import { FaGripLinesVertical } from "react-icons/fa";
 
 const data = [
   {
@@ -75,13 +76,13 @@ export default function MovieCard() {
 
   return (
     <>
-      <h2 className={`font-bold text-2xl text-gray-800 mt-16`}>
-        Featured Today &gt;
+      <h2 className={`flex font-bold text-2xl text-gray-800 mt-16`}>
+        <FaGripLinesVertical className="mt-[2px]"/>Actors Mania &gt;
       </h2>
       <Slider {...settings} className="mx-4 mt-16 gap-x-1"> {/* Reduced gap between slides */}
         {data.map((d, index) => (
           <div key={index} className="px-1 group"> {/* Reduced padding */}
-            <div className="relative border-2 border-black w-[13rem] h-[13rem] rounded-full z-0">
+            <div className="relative w-[13rem] h-[13rem] rounded-full z-0">
               <Image
                 src={d.image}
                 alt={d.name}
