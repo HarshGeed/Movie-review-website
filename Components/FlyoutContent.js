@@ -22,7 +22,7 @@ const MoviesContent = () => {
       <div>
         <div className="mb-3 space-y-3 text-2xl ">
           <Link
-            href="#"
+            href="/movies/top-100-imbd"
             className={LinkClass}
           >
             Top 100 IMDb
