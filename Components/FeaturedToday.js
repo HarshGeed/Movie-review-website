@@ -1,4 +1,4 @@
-import { colorTheme } from "@/lib/Constants";
+import { colorTheme } from "@/uiLib/Constants";
 import MovieCard from "./MovieCard";
 
 const data = [

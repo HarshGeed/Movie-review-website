@@ -7,7 +7,7 @@ import watchlogo from "../public/bookmark.png";
 import FlyoutLink from "./FlyoutLink";
 import {MoviesContent, TVShowsContent, AnimeContent} from "./FlyoutContent";
 import HoverLink from "./BlueLineLink";
-import { colorTheme } from "@/lib/Constants";
+import { colorTheme } from "@/uiLib/Constants";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,6 +1,6 @@
 "use client";
 
-import { colorTheme } from "@/lib/Constants";
+import { colorTheme } from "@/uiLib/Constants";
 import ImageSlideshow from "./SlideShow";
 import TrendingTrailerSlideup from "./TrendingTrailerSlideup";
 
