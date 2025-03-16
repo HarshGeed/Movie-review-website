@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 import User from "./app/models/userModel";
 
@@ -66,6 +65,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       console.log(token.name)
       return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.name = token.name;
+      }
+      return session;
     },
   },
 });
