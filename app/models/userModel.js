@@ -11,9 +11,15 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please provide an email"],
     unique: true,
   },
+  isOauth: {
+    type: Boolean,
+    default: false
+  },
   password: {
     type: String,
-    required: [true, "Please provide a password"]
+    required: function () {
+      return !this.get("isOauth"); // ✅ Corrected
+    },
   },
   isVerified: {
     type: Boolean,
@@ -23,10 +29,22 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  forgotPasswordToken: String,
-  forgotPasswordTokenExpiry: Date,
-  verifyToken: String,
-  verifyTokenExpiry: Date
+  forgotPasswordToken: {
+    type: String,
+    default: null
+  },
+  forgotPasswordTokenExpiry: {
+    type: Date,
+    default: null
+  },
+  verifyToken: {
+    type: String,
+    default: null
+  },
+  verifyTokenExpiry: {
+    type: Date,
+    default: null
+  },
 });
 
 const User = mongoose.models?.users || mongoose.model("users", userSchema);

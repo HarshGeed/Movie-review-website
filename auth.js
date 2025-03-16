@@ -5,10 +5,6 @@ import { compare } from "bcryptjs";
 import User from "./app/models/userModel";
 import { connect } from "./app/lib/dbConn";
 
-async function connectDB() {
-  await connect(); 
-  console.log("✅ MongoDB Connected");
-}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({ 
   providers: [
@@ -24,6 +20,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       authorize: async ({ email, password }) => {
         try {
+          connect();
+
           const user = await User.findOne({ email });
 
           if (!user) throw new Error("User not found");
@@ -46,11 +44,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     jwt: true,
     maxAge: 7 * 24 * 60 * 60,
   },
-  jwt:{
-    maxAge: 7 * 24 * 60 * 60,
-  },
   callbacks: {
     async jwt({ token, user, account }) {
+      // connect();
       if (account?.provider === "google") {
         // Find user in DB or create new one if not exists
         let dbUser = await User.findOne({ email: user.email });
@@ -59,7 +55,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           dbUser = await User.create({
             username: user.name,
             email: user.email,
-            password: "Google", // No password for Google users
+            isOauth: true,
             isVerified: true,
           });
         }
@@ -72,11 +68,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.email = user.email;
         token.name = user.username;
       }
-
-      console.log(token.name)
+      // console.log("Token after processing:", token);
       return token;
     },
     async session({ session, token }) {
+      // console.log("Session callback triggered with token:", token);
       if (token) {
         session.user.id = token.id;
         session.user.email = token.email;
