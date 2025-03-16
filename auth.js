@@ -3,6 +3,12 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 import User from "./app/models/userModel";
+import { connect } from "./app/lib/dbConn";
+
+async function connectDB() {
+  await connect(); 
+  console.log("✅ MongoDB Connected");
+}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({ 
   providers: [
@@ -38,6 +44,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     jwt: true,
+    maxAge: 7 * 24 * 60 * 60,
+  },
+  jwt:{
+    maxAge: 7 * 24 * 60 * 60,
   },
   callbacks: {
     async jwt({ token, user, account }) {

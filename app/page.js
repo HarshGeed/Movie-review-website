@@ -5,6 +5,7 @@ import HomePage from "@/Components/HomePage";
 import Navbar from "@/Components/Navbar";
 import News from "@/Components/News";
 import RecentlyViewed from "@/Components/RecentlyViewed";
+import LogoutButton from "@/Components/Signoutbtn";
 import TopTrending from "@/Components/TopTrending";
 import YourWatchlist from "@/Components/YourWatchlist";
 
@@ -22,6 +23,7 @@ export default function Home() {
         <YourWatchlist/>
         <RecentlyViewed/>
         </div>
+        <LogoutButton/>
         <Footer/>
      
     </>
