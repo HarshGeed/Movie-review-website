@@ -1,13 +1,18 @@
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
+import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 import User from "./app/models/userModel";
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({ 
   providers: [
-    Google,
-    Credentials({
+    GoogleProvider({
+      clientId: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+    }),
+    CredentialsProvider({
+      name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
@@ -18,11 +23,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           if (!user) throw new Error("User not found");
 
-          const isValidPassword = await compare(password, user.password);
+          const isValidPassword = compare(password, user.password);
 
           if (!isValidPassword) throw new Error("Password is wrong");
 
-          console.log(user)
+          console.log(user);
           return user;
         } catch (error) {
           console.log("Error =>", error.message);
@@ -34,5 +39,33 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     jwt: true,
+  },
+  callbacks: {
+    async jwt({ token, user, account }) {
+      if (account?.provider === "google") {
+        // Find user in DB or create new one if not exists
+        let dbUser = await User.findOne({ email: user.email });
+
+        if (!dbUser) {
+          dbUser = await User.create({
+            username: user.name,
+            email: user.email,
+            password: "Google", // No password for Google users
+            isVerified: true,
+          });
+        }
+
+        token.id = dbUser.id;
+        token.email = dbUser.email;
+        token.name = dbUser.username;
+      } else if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.username;
+      }
+
+      console.log(token.name)
+      return token;
+    },
   },
 });
